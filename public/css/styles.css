@@ -58,3 +58,31 @@
     transition: 0.3s ease;
   }
   
+
+  .input-container {
+    display: flex;
+    flex-direction: column; /* Stack label and input */
+    margin-bottom: 20px; /* Space between input containers */
+    width: 100%; /* Full width of container */
+  }
+  
+  .input-container label {
+    font-family: 'Montserrat', sans-serif; /* Use consistent font */
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px; /* Space between label and input */
+  }
+  
+  .input-container input {
+    padding: 10px; /* Padding inside input fields */
+    font-size: 16px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  .input-container input:focus {
+    border: 1px solid #999; /* Darker border on focus */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
