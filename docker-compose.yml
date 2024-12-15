@@ -1,0 +1,27 @@
+services:
+  webapp:
+    build: .
+    ports:
+      - "9115:9115" # Web app accessible on localhost:9115
+    environment:
+      - DB_HOST=localhost # Database is accessible on localhost
+      - DB_USER=harris
+      - DB_PASSWORD=Database@10
+      - DB_NAME=auth_db
+
+  db:
+    image: mysql:8
+    container_name: mysql_container
+    ports:
+      - "3306:3306" # MySQL accessible on localhost:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: Database@10
+      MYSQL_DATABASE: auth_db
+      MYSQL_USER: harris
+      MYSQL_PASSWORD: Database@10
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
+
+volumes:
+  db_data:
