@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const userSchema = require("../db/userSchema");
 const bcrypt = require("bcryptjs");
 const { checkRecordExists } = require("../db/sqlFunctions");
+const mysql = require("mysql2/promise");
 
 const login = async (req, res) => {
   const { username, password } = req.body;
@@ -29,7 +30,7 @@ const login = async (req, res) => {
         password,
         existingUser.password
       );
-      
+
       if (passwordMatch) {
         res
         .status(200)
