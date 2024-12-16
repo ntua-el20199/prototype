@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/", authRoutes);
 
-app.get('/', (rew, res) => {
+app.get('/', (req, res) => {
   res.redirect('/api');
 })
 
