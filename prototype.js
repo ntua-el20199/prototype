@@ -27,11 +27,12 @@ app.get('/api/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
+app.get('/api/failedLogin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'failedLogin.html'));
+});
+
 app.get('/api/dashboard', (req, res) => {
   const { username } = req.query;  // Extract username from the query string
-  if (!username) {
-    return res.status(400).send("Username is required.");
-  }
   
   // Send the dashboard page with a welcome message
   res.send(`<h1>Welcome, ${username}!</h1>`);

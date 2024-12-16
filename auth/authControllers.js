@@ -19,7 +19,9 @@ const login = async (req, res) => {
 
     if (existingUser) {
       if (!existingUser.password) {
-        res.status(401).json({ error: "Invalid credentials" });
+        res
+        .status(401)
+        .redirect('api/failedLogin');
         return;
       }
 
@@ -30,13 +32,19 @@ const login = async (req, res) => {
         .status(200)
         .redirect(`/api/dashboard?username=${encodeURIComponent(username)}`);
       } else {
-        res.status(401).json({ error: "Invalid credentials" });
+        res
+        .status(401)
+        .redirect('api/failedLogin');
       }
     } else {
-      res.status(401).json({ error: "Invalid credentials" });
+      res
+      .status(401)
+      .redirect('api/failedLogin');
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res
+    .status(500)
+    .redirect('api/failedLogin');
   }
 };
 

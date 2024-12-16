@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page - Invalid Credentials</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <!-- Invalid Credentials Message -->
+      <div class="error-message">
+        <p>Invalid Credentials. Please try again.</p>
+      </div>
+
+      <form action="/login" method="POST">
+        <div class="input-container">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required placeholder="Enter your username">
+        </div>
+
+        <div class="input-container">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+
+        <div class="button-container">
+          <button type="submit" class="login-button">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    /* Inline CSS for the error message (if not already defined in styles.css) */
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #f5c6cb;
+      border-radius: 5px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+    }
+  </style>
+</body>
+</html>
