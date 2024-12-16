@@ -1,12 +1,12 @@
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
-const userSchema = require("./userSchema");
+const userSchema = require("../db/userSchema");
 const bcrypt = require("bcryptjs");
-const { checkRecordExists } = require("./sqlFunctions");
+const { checkRecordExists } = require("../db/sqlFunctions");
 
 const login = async (req, res) => {
   const { username, password } = req.body;
-  console.log(req.body);
+
   if (!username || !password) {
     res
       .status(400)
@@ -19,7 +19,7 @@ const login = async (req, res) => {
 
     if (existingUser) {
       if (!existingUser.password) {
-        res.status(401).json({ error: "Invalid credentials 0" });
+        res.status(401).json({ error: "Invalid credentials" });
         return;
       }
 
@@ -30,10 +30,10 @@ const login = async (req, res) => {
         .status(200)
         .redirect(`/api/dashboard?username=${encodeURIComponent(username)}`);
       } else {
-        res.status(401).json({ error: "Invalid credentials 1" });
+        res.status(401).json({ error: "Invalid credentials" });
       }
     } else {
-      res.status(401).json({ error: "Invalid credentials 2" });
+      res.status(401).json({ error: "Invalid credentials" });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
